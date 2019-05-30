@@ -61,9 +61,9 @@ Solution I created a starter-module.xml in vqmod/xml folder.
 <modification>
     <name>Starter Module</name>
     <code>starter-module</code>
-    <version>3.0.1</version>
-    <author>Denise (rei7092@gmail.com)</author>
-    <link>http://demo.j-mall.com.tw/</link>
+    <version>1.0.0</version>
+    <author>Author</author>
+    <link>http://domain/</link>
 		<file path="catalog/controller/common/header.php">
 			<operation>
 				<search><![CDATA[return $this->load->view('common/header', $data);]]></search>
