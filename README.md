@@ -35,9 +35,10 @@ if (isset($this->request->post['new'])) {
 in catalog/controller/extension/module/starter_module.php
 
 ```
-            $data['new'] = $this->config->get('new');
+$data['new'] = $this->config->get('new');
 
-            $data['new'] = (int) $setting['new'];  
+$data['new'] = (int) $setting['new'];  
+
 ```
 
 in catalog/view/theme/default/template/common/header.twig
@@ -54,4 +55,40 @@ You can see here one of my working variable which was set in setting/setting fil
 
 https://github.com/bblori/Enable-Style-OC3
 
-Many thanks
+Solution I created a starter-module.xml in vqmod/xml folder.
+
+```
+<modification>
+    <name>Starter Module</name>
+    <code>starter-module</code>
+    <version>3.0.1</version>
+    <author>Denise (rei7092@gmail.com)</author>
+    <link>http://demo.j-mall.com.tw/</link>
+		<file path="catalog/controller/common/header.php">
+			<operation>
+				<search><![CDATA[return $this->load->view('common/header', $data);]]></search>
+				<add position="before"><![CDATA[
+	                    $data['config_new'] = $this->config->get('config_new');	
+						$data['config_boxed'] = $this->config->get('config_boxed');
+						$data['config_szinek'] = $this->config->get('config_szinek');
+						$data['config_hatterszin'] = $this->config->get('config_hatterszin');
+	           ]]></add>
+	        </operation>
+	    </file>
+	    <file path="catalog/controller/common/header.php">
+	    <operation>
+				<search><![CDATA[$data['newsletter'] = $this->url->link('account/newsletter', '', true);]]></search>
+				<add position="after"><![CDATA[
+					if (is_file(DIR_IMAGE . $this->config->get('config_headbg'))) {
+							$data['headbg'] = $server . 'image/' . $this->config->get('config_headbg');
+						} else {
+							$data['headbg'] = '';
+						}
+						]]></add>
+	        </operation>
+	    </file>
+</modification>
+
+```
+
+Many thanks for Denise Die.
