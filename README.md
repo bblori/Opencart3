@@ -1,4 +1,4 @@
-I would like to add a variable/display in common/header twig file, which can be managed from an new extension. The new extension is created. starter_module
+I would like to add a variable/display in common/header twig file, which can be managed from an new extension. The new extension is created as starter_module
 
 I added in: admin/view/template/extension/module/starter_module.twig
 
